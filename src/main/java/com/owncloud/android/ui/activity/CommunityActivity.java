@@ -25,9 +25,11 @@ import android.os.Bundle;
 import android.text.Html;
 import android.text.method.LinkMovementMethod;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.TextView;
 
 import com.google.android.material.button.MaterialButton;
+import com.owncloud.android.BuildConfig;
 import com.owncloud.android.R;
 import com.owncloud.android.databinding.CommunityLayoutBinding;
 import com.owncloud.android.utils.DisplayUtils;
@@ -109,6 +111,10 @@ public class CommunityActivity extends DrawerActivity {
 
         binding.communityBetaApk.setOnClickListener(
             l -> DisplayUtils.startLinkIntent(this, R.string.beta_apk_link));
+
+        if (BuildConfig.FLAVOR.equals("huawei")) {
+            binding.communityReleaseCandidatePlaystore.setVisibility(View.GONE);
+        }
     }
 
     @Override
