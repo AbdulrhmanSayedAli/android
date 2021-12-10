@@ -35,6 +35,7 @@ import com.nextcloud.client.account.UserAccountManager;
 import com.nextcloud.client.jobs.NotificationWork;
 import com.nextcloud.client.network.ClientFactory;
 import com.nextcloud.java.util.Optional;
+import com.owncloud.android.BuildConfig;
 import com.owncloud.android.R;
 import com.owncloud.android.databinding.NotificationsLayoutBinding;
 import com.owncloud.android.datamodel.ArbitraryDataProvider;
@@ -132,6 +133,10 @@ public class NotificationsActivity extends DrawerActivity implements Notificatio
     }
 
     private void setupPushWarning() {
+        if (BuildConfig.FLAVOR.equals("huawei")) {
+            return;
+        }
+
         if (snackbar != null) {
             if (!snackbar.isShown()) {
                 snackbar.show();
